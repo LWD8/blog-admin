@@ -1,0 +1,41 @@
+.uploadbox{
+  cursor: pointer;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  color: #1C2438;
+  border: 1px dashed #e9eaec;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  &:hover .iconbox{
+      display:block;
+  }
+  .ivu-upload{
+      width: 80px;
+  }
+  .iconbox{
+      display: none;
+      position: absolute;
+      top: 0;
+      left:0;
+      width: 100%;
+      height: 100%;
+      z-index: 9;
+      background-color: rgba(#000000, 0.2);
+  }
+  i{
+      position: absolute;
+      top:25px;
+      left:28px;
+      z-index: 10;
+      color: #fff;
+  }
+  .image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
