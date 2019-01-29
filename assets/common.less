@@ -1,41 +1,209 @@
-.uploadbox{
-  cursor: pointer;
-  width: 80px;
-  height: 80px;
-  line-height: 80px;
-  text-align: center;
-  color: #1C2438;
-  border: 1px dashed #e9eaec;
-  border-radius: 50%;
-  position: relative;
-  overflow: hidden;
-  float: left;
-  &:hover .iconbox{
-      display:block;
-  }
-  .ivu-upload{
-      width: 80px;
-  }
-  .iconbox{
-      display: none;
-      position: absolute;
-      top: 0;
-      left:0;
-      width: 100%;
-      height: 100%;
-      z-index: 9;
-      background-color: rgba(#000000, 0.2);
-  }
-  i{
-      position: absolute;
-      top:25px;
-      left:28px;
-      z-index: 10;
-      color: #fff;
-  }
-  .image{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.uploadbox {
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
+    color: #1C2438;
+    border: 1px dashed #e9eaec;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    float: left;
+    &:hover .iconbox {
+        display: block;
+    }
+    .ivu-upload {
+        width: 80px;
+    }
+    .iconbox {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 9;
+        background-color: rgba(#000000, 0.2);
+    }
+    i {
+        position: absolute;
+        top: 25px;
+        left: 28px;
+        z-index: 10;
+        color: #fff;
+    }
+    .image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.gutter pre {
+    color: #999;
+}
+
+pre {
+    color: #333333;
+    .function .keyword,
+    .constant {
+        color: #0092db;
+    }
+    .keyword,
+    .attribute {
+        color: #e96900;
+    }
+    .number,
+    .literal {
+        color: #AE81FF;
+    }
+    .tag,
+    .tag .title,
+    .change,
+    .winutils,
+    .flow,
+    .lisp .title,
+    .clojure .built_in,
+    .nginx .title,
+    .tex .special {
+        color: #2973b7;
+    }
+    .class .title {
+        color: green;
+    }
+    .symbol,
+    .symbol .string,
+    .value,
+    .regexp {
+        color: #42b983;
+    }
+    .title {
+        color: #A6E22E;
+    }
+    .tag .value,
+    .string,
+    .subst,
+    .haskell .type,
+    .preprocessor,
+    .ruby .class .parent,
+    .built_in,
+    .sql .aggregate,
+    .django .template_tag,
+    .django .variable,
+    .smalltalk .class,
+    .javadoc,
+    .django .filter .argument,
+    .smalltalk .localvars,
+    .smalltalk .array,
+    .attr_selector,
+    .pseudo,
+    .addition,
+    .stream,
+    .envvar,
+    .apache .tag,
+    .apache .cbracket,
+    .tex .command,
+    .prompt {
+        color: #42b983;
+    }
+    .comment,
+    .java .annotation,
+    .python .decorator,
+    .template_comment,
+    .pi,
+    .doctype,
+    .deletion,
+    .shebang,
+    .apache .sqbracket,
+    .tex .formula {
+        color: #b3b3b3;
+    }
+    .coffeescript .javascript,
+    .javascript .xml,
+    .tex .formula,
+    .xml .javascript,
+    .xml .vbscript,
+    .xml .css,
+    .xml .cdata {
+        opacity: 0.5;
+    }
+}
+
+html,
+body {
+    margin: 0;
+    color: var(--text);
+    letter-spacing: 0.5px; // font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    font-family: 'Futura';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    padding: 5rem 0 0 0;
+    background: #fff;
+}
+
+body.mobile {
+    overflow-x: hidden;
+    padding: 0;
+    background: #fff;
+}
+
+code,
+pre {
+    font-family: "Roboto Mono", Monaco, courier, monospace;
+    -webkit-font-smoothing: initial;
+    -moz-osx-font-smoothing: initial;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: #666;
+    font-size: 1rem;
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #666;
+    font-size: 1rem;
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #666;
+    font-size: 1rem;
+}
+
+:-ms-input-placeholder {
+    /* Internet Explorer 10+ */
+    color: #666;
+    font-size: 1rem;
+}
+
+::-webkit-scrollbar {
+    width: .5rem;
+    height: .5rem;
+    background: hsla(0, 0%, 100%, 0.6);
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0;
+    background-color: rgba(95, 95, 95, .4);
+    transition: all .2s;
+    border-radius: .5rem;
+    &:hover {
+        background-color: rgba(95, 95, 95, .7);
+    }
 }

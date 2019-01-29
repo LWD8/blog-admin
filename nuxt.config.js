@@ -60,7 +60,7 @@ module.exports = {
   modules: [
     // Doc: https://github.com/nuxt-community/axios-module#usage
     ['@nuxtjs/axios', {
-      baseURL: process.env.NODE_ENV === 'production' ? 'http://127.0.0.1:3005' : 'http://127.0.0.1:3005',
+      baseURL: process.env.NODE_ENV === 'production' ? 'http://119.23.247.77:3005/' : 'http://127.0.0.1:3005',
       requestInterceptor(config, { store }) {
         // config.headers.common['Authorization'] = '1231561651651265165'
         return config

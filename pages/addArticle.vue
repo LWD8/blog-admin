@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>增加文章</h1>
+      <h1>文章管理</h1>
       <Form ref="formValidate" :model="formValidate" :rules="ruleValidate" :label-width="120" class="from_box" style="width: 1000px;margin:0 auto;">
           <FormItem label="标题ID" prop="id">
               <Input v-model="formValidate.id" placeholder="标题"></Input>
@@ -29,7 +29,7 @@
               <Input v-model="formValidate.keyword" placeholder="搜索关键字"></Input>
           </FormItem>
           <FormItem label="评论(/人)" prop="comments">
-              <Input v-model="formValidate.comments" placeholder="评论数"></Input>
+              <Input v-model="formValidate.comments" disabled placeholder="评论数"></Input>
           </FormItem>
           <FormItem label="文章喜欢(/人)" prop="likes">
               <Input v-model="formValidate.likes" placeholder="文章喜欢"></Input>
@@ -57,7 +57,7 @@
           </FormItem>
           <FormItem label="Desc" prop="content">
               <!-- <Input v-model="formValidate.content" type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="内容"></Input> -->
-              <mavon-editor ref="mavoneditor" v-model="formValidate.content"  @imgAdd="$imgAdd"/>
+              <mavon-editor style="max-height: 600px;" ref="mavoneditor" v-if="formValidate.content || !$route.query.id" v-model="formValidate.content"  @imgAdd="$imgAdd"/>
           </FormItem>
           <FormItem>
               <Button type="primary" @click="handleSubmit('formValidate')">保存</Button>
@@ -70,11 +70,15 @@
 import { mapActions } from 'vuex'
 import uploadBox from '~/components/upload'
 import { blobToDataUri, putb64 } from '~/plugins/base'
+import { setTimeout } from 'timers';
 export default {
   components: {
     uploadBox
   },
-  created () {
+  async created () {
+    // 编辑文章
+    this.$route.query.id && await this.articleDetail(this.$route.query.id)
+    // 获取七牛token
     this.getToken()
   },
   data() {
@@ -90,7 +94,8 @@ export default {
         type: '',
         publish: '',
         state: '',
-        content: ''
+        content: '',
+        isEdit: false
       },
       ruleValidate: {
         id: [
@@ -175,6 +180,18 @@ export default {
     };
   },
   methods: {
+    async articleDetail(id) {
+      let { data } = await this.REQ_articleDetail(id)
+      this.formValidate = data.data
+      this.formValidate.id = data.data.id.toString()
+      this.formValidate.comments = data.data.meta.comments.toString()
+      this.formValidate.likes = data.data.meta.likes.toString()
+      this.formValidate.views = data.data.meta.views.toString()
+      this.formValidate.type = data.data.type.toString()
+      this.formValidate.publish = data.data.publish.toString()
+      this.formValidate.state = data.data.state.toString()
+      this.formValidate.isEdit = true
+    },
     getLoadPath(src) {
       console.log(src)
       this.formValidate.thumb = src
@@ -223,8 +240,11 @@ export default {
 
     ...mapActions([
       'REQ_addArticle',
-      'REQ_qiniuToken'
+      'REQ_qiniuToken',
+      'REQ_articleDetail'
     ])
+  },
+  mounted () {
   }
 };
 </script>
