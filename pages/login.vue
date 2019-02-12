@@ -22,8 +22,8 @@ export default {
   data() {
     return {
       formInline: {
-        username: "13005678340",
-        password: "123456"
+        username: "",
+        password: ""
       },
       ruleInline: {
         username: [

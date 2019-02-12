@@ -9,4 +9,4 @@ export default function ({ store, redirect ,req, app}) {
     redirect('/login')
     return
   }
-} 
+}
